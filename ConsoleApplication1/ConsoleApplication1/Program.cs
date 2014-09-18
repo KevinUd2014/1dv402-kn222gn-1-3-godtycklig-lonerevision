@@ -13,12 +13,23 @@ namespace ConsoleApplication1
             int count = ReadInt("Enter the amount of salaries you want to process: ");
             int Amount = ReadInt("Enter the amount of the salaries (kr): ");
 
+            if (count <= 2)
+            {
+                ProcessSalaries(count);
+            }
+
         }
         static int ReadInt(string Prompt)
         {
             Console.Write(Prompt);
-            int Newcount = int.Parse(Console.ReadLine());
-            return Newcount;
+            int NewValue = int.Parse(Console.ReadLine());
+            return NewValue;
+        }
+        static void ProcessSalaries(int count)
+        { 
+
+
+        
         }
     }
 }
