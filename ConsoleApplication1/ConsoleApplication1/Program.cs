@@ -15,7 +15,7 @@ namespace ConsoleApplication1
                 int count = ReadInt("Enter the amount of salaries you want to process: ");
                 Console.WriteLine(count);
 
-                if (count >= 2)
+                if (count > 2)
                 {
                     ProcessSalaries(count);  //om nu count är mindre än 2 så kommer else att skriva ut texten med felmeddelande och be personen skriva ut antal igen som är lika med 2 eller mer!
                 }
@@ -49,17 +49,22 @@ namespace ConsoleApplication1
             int MedianOne;
             int MedianTwo;
             int Median;
+                                              //int[] unsortedSalaries = new int(count);
+            int number = 0;
             int[] Salaries = new int[count];  // nu ska personen skriva in alla löner
             for (int i = 0; i < count; i++)
             {
-                Console.Write("Enter salary nr  : ");
-                Salaries[i] = int.Parse(Console.ReadLine());
+                number += 1;
+                Salaries[i] = ReadInt("Enter Salarie " + (i+1) + (": "));
+                
             }
 
             Console.Write("\n");
 
+                                             //Array.Copy(Salaries, UnsortedSalaries, count);
             Array.Sort(Salaries);
 
+            Console.WriteLine("-------------------------------------------");
             if (count % 2 == 0)
             {
                 MedianOne = count / 2;
@@ -67,14 +72,26 @@ namespace ConsoleApplication1
 
                 Median = (Salaries[MedianOne] + Salaries[MedianTwo]) / 2;
 
-                Console.WriteLine("The median is: {0:c}", Median);
+                Console.WriteLine("The median is: {0:c0}", Median);
 
             }
             else
             { 
-                Median = count / 2;
-                Console.WriteLine("The median is: {0:c}", Salaries[Median]);
+              Median = count / 2;
+              Console.WriteLine("The median Salarie is:  {0:c0}", Salaries[Median]);
             }
+
+              Salaries.Average();
+              Console.WriteLine("The average salarie is: {0:c0}", Salaries.Average());
+           
+
+              Console.WriteLine("The diffrence is:       {0:c0} ", Salaries.Max() - Salaries.Min() );
+
+
+              Console.WriteLine("-------------------------------------------");
+
+
+
             
             //foreach (int Element in i ) Console.Write(Element + " ");  //Skriver arrayen, Antal beror på inskrivet antal i count! i ordning!
             //{
@@ -82,7 +99,7 @@ namespace ConsoleApplication1
             //}
 
 
-
-        }
+            
+            }
     }
 }
